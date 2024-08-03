@@ -1,0 +1,15 @@
+name: SMPPlugin
+version: 0.0.1
+main: com.mcsmp.SMPPlugin
+api-version: 1.16
+author: "Palm1ye"
+config-version: 1
+config: config.yml
+description: "A simple plugin for creating servers."
+commands:
+  createserver:
+    description: "Create a server."
+  invite:
+    description: "Invite a player to your server."
+  listservers:
+    description: "List all servers."
