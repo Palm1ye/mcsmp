@@ -9,12 +9,10 @@ import com.mcsmp.commands.JoinServerCommand;
 
 public class SMPPlugin extends Plugin{
     private ServerManager serverManager;
-    private ConfigManager configManager;
 
     @Override
     public void onEnable() {
-        configManager = new ConfigManager("config.yml");
-        serverManager = new ServerManager(configManager);
+        serverManager = new ServerManager();
         getProxy().getPluginManager().registerCommand(this, new CreateServerCommand(serverManager));
         getProxy().getPluginManager().registerCommand(this, new JoinServerCommand(serverManager));
         getProxy().getPluginManager().registerCommand(this, new InviteCommand(serverManager));

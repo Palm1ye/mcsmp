@@ -16,16 +16,11 @@ import java.util.Map;
 
 public class ServerManager {
     private Map<String, ServerInfo> serverMap = new HashMap<>();
-    private ConfigManager configManager;
-
-    public ServerManager(ConfigManager configManager) {
-        this.configManager = configManager;
-    }
 
 
     public void createNewServer(String serverName) {
-        String basePath = configManager.getString("server.basePath");
-        String newServerPath = configManager.getString("server.newServerPath") + serverName;
+        String basePath = "/root/creator/";
+        String newServerPath = "/root/newservers/" + serverName;
 
         // Get the base server files
         new File(newServerPath).mkdirs();
@@ -37,12 +32,7 @@ public class ServerManager {
         // Start the server
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
-                configManager.getString("server.javaPath"),
-                "-Xms" + configManager.getString("server.initialMemory"),
-                "-Xmx" + configManager.getString("server.maximumMemory"),
-                "-jar",
-                configManager.getString("server.jarFile"),
-                "nogui"
+                "/usr/bin/java", "-jar", "spigot.jar", "--port", String.valueOf(port)
             );
             processBuilder.directory(new File(newServerPath));
             processBuilder.redirectErrorStream(true); // Read the error stream
@@ -80,7 +70,7 @@ public class ServerManager {
             }
             port++;
         }
-        throw new RuntimeException("Boşta port yok");
+        throw new RuntimeException("There are no available ports");
     }
 
     private boolean isPortAvailable(int port) {
@@ -95,7 +85,7 @@ public class ServerManager {
 
     private void copyDirectory(File source, File target) {
         if (!source.isDirectory()) {
-            throw new IllegalArgumentException("Kaynak bir klasör olmak zorunda");
+            throw new IllegalArgumentException("Source must be a directory");
         }
         if (!target.exists()) {
             target.mkdirs();

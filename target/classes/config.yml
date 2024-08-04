@@ -1,7 +1,0 @@
-server:
-  basePath: "/root/lobby/"
-  newServerPath: "/root/newservers/"
-  javaPath: "/usr/bin/java"
-  initialMemory: "1G"
-  maximumMemory: "1G"
-  jarFile: "spigot.jar"
