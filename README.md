@@ -21,12 +21,12 @@ SMPPlugin is a BungeeCord plugin designed to dynamically create and manage Minec
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Palm1ye/SMPPlugin.git
+    git clone https://github.com/Palm1ye/mcsmp.git
     ```
 
 2. Navigate to the plugin directory:
     ```bash
-    cd SMPPlugin
+    cd mcsmp
     ```
 
 3. Build the plugin
